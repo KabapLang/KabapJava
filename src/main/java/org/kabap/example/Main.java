@@ -22,7 +22,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
 import org.kabap.Kabap;
+import org.kabap.KabapFile;
+import org.kabap.KabapNet;
 
 /**
  * Kabap for Java
@@ -67,14 +70,14 @@ public class Main {
 			returnCode = 2;
 		} else if (paramExample) { // Called to execute the internal example Kabap script
 			/* The example used:
-			 * 
+			 *
 			 *  $answer = 2 + 2;
 			 *  return = "Hello world! 2+2=" << $answer;
 			 */
 			sourceData = "$answer = 2 + 2;" + "\n" + "return = \"Hello world! 2+2=\" << $answer;";
 		} else { // Called to execute a Kabap script from disk
 			File sourceFile = new File (args[0]);
-		
+
 			// Attempt to read the file from disk
 			if (!sourceFile.exists ()) {
 				System.err.println ("File does not exist: " + args[0]);
@@ -97,6 +100,10 @@ public class Main {
 
 			// Create a new instance
 			Kabap kabap = new Kabap ();
+
+			// Add the standard extensions
+			kabap.extensionAdd (new KabapFile ());
+			kabap.extensionAdd (new KabapNet ());
 
 			// Give the script to the instance
 			success = kabap.script (sourceData);
@@ -152,7 +159,7 @@ public class Main {
 
 			outputStream.close ();
 			inputStream.close ();
-			
+
 			return outputStream.toString ();
 		} catch (IOException e) {
 			e.printStackTrace ();
