@@ -2,6 +2,8 @@
 
 #### An implementation of Kabap for the Java Virtual Machine
 
+[![Build Status](https://travis-ci.com/KabapLang/KabapJava.svg?branch=master)](https://travis-ci.com/KabapLang/KabapJava)
+
 Kabap for Java is the core for all other Java based platforms that have Kabap implementations (Android, AWS Lambda, etc.).  You can use this repository in multiple ways depending on your preference:
 * Download the full repo and run it (this project is a standalone command-line Kabap executor)
 * Download the full repo and change it to build your own project on top of it

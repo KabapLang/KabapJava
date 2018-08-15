@@ -1,0 +1,5 @@
+language: java
+before_install:
+  - git clone https://github.com/KabapLang/KabapTestSuite.git
+  - mv KabapTestSuite src/test/resources/
+script: mvn -Dtest=UnitTesting test
